@@ -9,7 +9,7 @@ import numpy as np
 # Power_scaler = joblib.load('Power-scaler.save')
 
 
-def predict(data_in):
+def predict(**data_in):
     """
 
     :param data: {
@@ -18,13 +18,12 @@ def predict(data_in):
 }
     :return:
     """
-    # loading pre-trained model
-    #data_in=json.loads(data_in)
-    print(type(data_in))
+    print(f"Data Type: {type(data_in)}")
     print(data_in)
     "model loading and data transfor"
     model = tf.keras.models.load_model('./model/M_iter3_1.h5', compile=True)
-    features_1 = np.array(np.append([data_in.get("powerConsumption")], [data_in.get("load")]), ndmin=2)
+    features_1 = np.array(np.append([data_in.get("data")["powerConsumption"]],
+                                     [data_in.get("data")["load"]]), ndmin=2)
     pred = np.argmax(model.predict(features_1), axis=1) # need to pus that vakue to message bus
     json_results = json.dumps({"BT_Class":str(pred)}, indent=4)
     return json_results

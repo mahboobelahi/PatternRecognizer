@@ -1,5 +1,5 @@
 {
-    "name": "FASTory BT Class Predictor",
+    "name": "FASTory Energy Consumption Pattern Recognizer",
     "description": "ANN model to predict FASTory Assembly line's belt tension Class",
     "tags": ["Conveyor-Belt","Belt Tension","AI","Pattern Recognizer","ANN"],
     "input": {
