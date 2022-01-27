@@ -25,7 +25,7 @@ def predict(**data_in):
     features_1 = np.array(np.append([data_in.get("data")["powerConsumption"]],
                                      [data_in.get("data")["load"]]), ndmin=2)
     pred = np.argmax(model.predict(features_1), axis=1) # need to pus that vakue to message bus
-    json_results = json.dumps({"BT_Class":str(pred)}, indent=4)
+    json_results = json.dumps({"BT_Class":int(pred[0])}, indent=4)
     return json_results
 """
     from predict import predict
